@@ -50,30 +50,26 @@
         </ul>
         <!-- Right navbar links -->
         <ul class="navbar-nav ml-auto">
-            <!-- Notifications Dropdown Menu -->
-            <li class="nav-item dropdown">
-                <a class="nav-link" data-toggle="dropdown" href="javascript:void(0)">
-                    <i class="far fa-user"></i>
+            <li class="nav-item dropdown user-menu">
+                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+                    <img src="{{ asset('image/User-Avatar.png') }}" class="user-image img-circle elevation-2" alt="User Image">
+                    <span class="d-none d-md-inline">Alexander Pierce</span>
                 </a>
-                <div class="border-0 user-layout dropdown-menu dropdown-menu-lg dropdown-menu-right">
-
-                    <div class="user-header">
-                        <div class="user-image">
-                            <img class="img-fluid img-circle" style="opacity: .8"
-                                 src="{{ asset('image/User-Avatar.png') }}" alt="User Avatar">
-                        </div>
-                        <div class="user-name">
-                            <p>
-                                Admin User
-                                {{--{{ Auth::guard('admin')->user()->name }}--}}
-                            </p>
-                        </div>
-                    </div>
-                    <div class="user-footer">
-                        <a href="" class="btn btn-default btn-flat float-left">Change Password</a>
-                        <a href="" class="btn btn-danger btn-flat float-right">Sign out</a>
-                    </div>
-                </div>
+                <ul class="user-layout dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                    <!-- User image -->
+                    <li class="user-header bg-dark">
+                        <img src="{{ asset('image/User-Avatar.png') }}" class="img-circle elevation-2" alt="User Image">
+                        <p>
+                            Alexander Pierce
+                            {{--{{ Auth::guard('admin')->user()->name }}--}}
+                        </p>
+                    </li>
+                    <!-- Menu Footer-->
+                    <li class="user-footer">
+                        <a href="#" class="btn btn-default btn-flat">Change Password</a>
+                        <a href="#" class="btn btn-default btn-flat float-right">Sign out</a>
+                    </li>
+                </ul>
             </li>
         </ul>
     </nav>
@@ -122,7 +118,7 @@
     </aside>
 
     <!-- Content Wrapper. Contains page content -->
-@yield('content')
+    @yield('content')
 <!-- /.content-wrapper -->
     <footer class="main-footer">
         <strong>Copyright &copy; {{ date('Y') }} <a href="http://annanovas.com/">Annanovas IT LTD</a>.</strong>

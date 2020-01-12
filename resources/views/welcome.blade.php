@@ -81,7 +81,7 @@
 
     <div class="content">
         <div class="title m-b-md">
-            {{ config('app.name', 'Laravel') }}
+            Welcome To {{ config('app.name', 'Laravel') }}
         </div>
     </div>
 </div>
