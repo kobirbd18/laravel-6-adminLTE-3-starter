@@ -23,7 +23,7 @@
 <body class="hold-transition login-page">
 <div class="login-box">
     <div class="login-logo">
-        <a href="#"><b>Admin</b>LTE</a>
+        <a href="#"><b>Admin</b>Login</a>
     </div>
     <!-- /.login-logo -->
     @yield('content')

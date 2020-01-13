@@ -165,7 +165,10 @@
 <script src="{{ asset('js/backend/adminlte.js') }}"></script>
 <script>
     $(document).ready(function () {
+        $('ul.user-layout').on('click',function (event) {
+            event.stopPropagation();
 
+        })
 
     });
 </script>
