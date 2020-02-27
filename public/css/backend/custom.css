@@ -4,37 +4,38 @@
 }
 
 
-input{border-radius:0 !important; }
-
-.error-message {
-    color: #f11;
+.custom-file,
+.custom-file-label,
+.input-group-text,
+.select2-container--default .select2-selection--single ,
+.select2-dropdown,
+ input{border-radius:0 !important; }
+.form-control:focus {
+    color: #495057;
+    border-color: #3c8dbc;
+    outline: 0;
+    box-shadow: none;
 }
 
-.report_table_total {
-    background-color: #e8e8e8 !important;
+td.action a {
+    float: left;
+    margin-right: 2px;
 }
-
-.message_history_car_owner {
-    background-color: #f7f7f7;
+.table td, .table th {
+    padding: 0.5rem;
+    vertical-align: middle;
 }
-
-.message_history_supplier {
-    background-color: #d2d6de;
+.card-body>.table>thead>tr>td, .card-body>.table>thead>tr>th {
+    border-top-width: 1px !important;
+    border-bottom-width: 1px !important;
 }
 
 .breadcrumb {
     display: none !important;
 }
 
-.sub-total li {
-    list-style: none;
-    text-align: left;
-}
 textarea.resize-vertical {
     resize: vertical;
-}
-.sub-total {
-    padding: 0;
 }
 
 .allpermissions {
@@ -47,12 +48,34 @@ textarea.resize-vertical {
 }
 
 .revert {
+    font-size: 14px;
+    margin-left: 10px;
+}
+label:not(.form-check-label):not(.custom-file-label) {
+    font-weight: 500;
+}
+
+.selectrevertcategory label{
+    font-size: 14px;
     margin-left: 10px;
 }
 
-.permissionscategory {
-    font-size: 15px;
-    font-weight: 600;
+a#copy-button {
+    position: absolute;
+    top: 37px;
+    right: -100px;
+    z-index: 999;
+}
+@media only screen and (max-width: 767px)  {
+    a#copy-button {
+        top: 0;
+        right: 10px;
+    }
+}
+
+select.disabled + .select2 {
+    pointer-events: none;
+    opacity: 0.5;
 }
 
 .permissionlabel {

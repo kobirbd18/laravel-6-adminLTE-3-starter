@@ -12,6 +12,18 @@ class Helper
 {
     /*
     * this function is used for showing active route
+    * @return menu-open
+    */
+    public static function menuIsOpen($routeNames)
+    {
+        $currentRoute = Route::currentRouteName();
+
+        if (in_array($currentRoute, $routeNames)) {
+            return 'menu-open';
+        }
+    }
+    /*
+    * this function is used for showing active route
     * @return ACTIVE
     */
     public static function menuIsActive($routeNames)
@@ -32,13 +44,12 @@ class Helper
     public static function activeStatusLabel($activeStatus)
     {
         if ($activeStatus == 1) {
-            return '<span class="label label-success">' . Config::get('constants.ACTIVE_STATUSES')[$activeStatus] . '</span>';
+            return '<span class="badge badge-success">' . Config::get('constants.ACTIVE_STATUSES')[$activeStatus] . '</span>';
         } else if ($activeStatus == 0) {
-            return '<span class="label label-warning">' . Config::get('constants.ACTIVE_STATUSES')[$activeStatus] . '</span>';
+            return '<span class="badge badge-warning">' . Config::get('constants.ACTIVE_STATUSES')[$activeStatus] . '</span>';
         } else {
-            return '<span class="label label-default">No</span>';
+            return '<span class="badge badge-default">No</span>';
         }
-
     }
 
 
@@ -80,7 +91,6 @@ class Helper
     {
         return env('CDN_URL') . '/' . $filePath;
     }
-
 
 
     //end class
