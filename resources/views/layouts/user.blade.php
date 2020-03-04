@@ -23,6 +23,8 @@
     <link rel="stylesheet" href="{{ asset('css/backend/plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
     <!-- Daterange picker -->
     <link rel="stylesheet" href="{{ asset('css/backend/plugins/daterangepicker/daterangepicker.css') }}">
+    <!-- Date picker -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/backend/plugins/datepicker/datepicker3.css') }}" />
     <!-- summernote -->
     <link rel="stylesheet" href="{{ asset('css/backend/plugins/summernote/summernote-bs4.css') }}">
     <!-- select 2 -->
@@ -164,9 +166,11 @@
     <script src="{{ asset('js/backend/plugins/jqvmap/maps/jquery.vmap.usa.js') }}"></script>
     <!-- jQuery Knob Chart -->
     <script src="{{ asset('js/backend/plugins/jquery-knob/jquery.knob.min.js') }}"></script>
-    <!-- daterangepicker -->
     <script src="{{ asset('js/backend/plugins/moment/moment.min.js') }}"></script>
+    <!-- daterange picker -->
     <script src="{{ asset('js/backend/plugins/daterangepicker/daterangepicker.js') }}"></script>
+    <!-- date picker -->
+    <script type="text/javascript" src="{{ asset('js/backend/plugins/datepicker/bootstrap-datepicker.js') }}"></script>
     <!-- Tempusdominus Bootstrap 4 -->
     <script src="{{ asset('js/backend/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js') }}">
     </script>
