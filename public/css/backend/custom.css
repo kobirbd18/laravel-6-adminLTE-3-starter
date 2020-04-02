@@ -1,15 +1,29 @@
-.user-layout{
+.user-layout {
     margin-top: 8px;
     border-radius: 0 !important;
 }
 
+.disabled,
+select.disabled + .select2 {
+    pointer-events: none;
+    opacity: 0.5;
+}
 
 .custom-file,
+.btn,
 .custom-file-label,
 .input-group-text,
-.select2-container--default .select2-selection--single ,
+.select2-container--default .select2-selection--single,
 .select2-dropdown,
- input{border-radius:0 !important; }
+input {
+    border-radius: 0 !important;
+}
+
+span.select2.select2-container.select2-container--default {
+    display: block;
+    width: 100% !important;
+}
+
 .form-control:focus {
     color: #495057;
     border-color: #3c8dbc;
@@ -21,11 +35,16 @@ td.action a {
     float: left;
     margin-right: 2px;
 }
-.table td, .table th {
+.table th {
     padding: 0.5rem;
     vertical-align: middle;
 }
-.card-body>.table>thead>tr>td, .card-body>.table>thead>tr>th {
+.table td {
+    padding: 0.3rem;
+    vertical-align: middle;
+}
+.card-body > .table > thead > tr > td,
+.card-body > .table > thead > tr > th {
     border-top-width: 1px !important;
     border-bottom-width: 1px !important;
 }
@@ -55,27 +74,9 @@ label:not(.form-check-label):not(.custom-file-label) {
     font-weight: 500;
 }
 
-.selectrevertcategory label{
+.selectrevertcategory label {
     font-size: 14px;
     margin-left: 10px;
-}
-
-a#copy-button {
-    position: absolute;
-    top: 37px;
-    right: -100px;
-    z-index: 999;
-}
-@media only screen and (max-width: 767px)  {
-    a#copy-button {
-        top: 0;
-        right: 10px;
-    }
-}
-
-select.disabled + .select2 {
-    pointer-events: none;
-    opacity: 0.5;
 }
 
 .permissionlabel {
@@ -86,10 +87,7 @@ select.disabled + .select2 {
     font-weight: 700 !important;
 }
 
-.form-group.custom-position {
-    position: relative;
-}
-.unauthorized-page{
+.unauthorized-page {
     width: 100%;
     height: calc(100vh - 131px);
     display: flex;
@@ -97,92 +95,20 @@ select.disabled + .select2 {
     justify-content: center;
     padding: 0 100px;
 }
-.unauthorized-page .headline{
+.unauthorized-page .headline {
     font-size: 70px;
     color: #ea5959;
     text-transform: uppercase;
     text-align: center;
 }
 @media (max-width: 575.98px) {
-    .unauthorized-page{
+    .unauthorized-page {
         padding: 0 70px;
     }
-    .unauthorized-page .headline{
+    .unauthorized-page .headline {
         font-size: 40px;
     }
 }
-.error-page>.headline {
+.error-page > .headline {
     margin-top: 0px;
-}
-.loader {
-    position: fixed;
-    height: 100%;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 99999;
-    background: #fffdfd61;
-    display: none;
-}
-.loader.active-loader{
-    display: block;
-}
-.loader .ajax-content {
-    text-align: center;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-}
-span#vendor_id {
-    position: absolute !important;
-    top: 32px;
-    right: 12px;
-}
-
-.user-header p {
-    margin-bottom: 0px;
-}
-
-.user-header small {
-    color: rgba(255, 255, 255, 0.8)
-}
-.user-header small strong{
-
-}
-.timeline-bg{
-    background: #f0f0f0 !important;
-    border: 1px solid #ddd !important;
-    box-shadow: none;
-    margin-top: 15px !important;
-}
-
-.info-box.logs{
-    min-height: 60px;
-}
-.info-box.logs .info-box-icon {
-    height: 60px;
-    width: 60px;
-    line-height: 60px;
-    font-size: 30px;
-}
-.info-box.logs .info-box-content {
-    margin-left: 60px;
-    position: relative;
-}
-.log.time{
-    position: absolute;
-    top: 0;
-    right: 15px;
-}
-.info-box-text small{
-    text-transform: none !important;
-}
-span.select2.select2-container.select2-container--default {
-    display: block;
-    width: 100% !important;
-}
-
-input#is_depreciation {
-    height: 20px;
-    width: 20px;
 }

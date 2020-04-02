@@ -14,7 +14,8 @@
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Bootstrap 4 -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <!-- iCheck -->
     <link rel="stylesheet" href="{{ asset('css/backend/plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
     <!-- JQVMap -->
@@ -29,7 +30,8 @@
     <link rel="stylesheet" href="{{ asset('css/backend/plugins/summernote/summernote-bs4.css') }}">
     <!-- select 2 -->
     <link rel="stylesheet" href="{{ asset('css/backend/plugins/select2/css/select2.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/backend/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">
+    <link rel="stylesheet"
+        href="{{ asset('css/backend/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('css/backend/adminlte.min.css') }}">
     <!-- Google Font: Source Sans Pro -->
@@ -59,16 +61,21 @@
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item dropdown user-menu">
                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-                        <img src="{{ asset('image/User-Avatar.png') }}" class="user-image img-circle elevation-2" alt="User Image">
-                        <span class="d-none d-md-inline">Alexander Pierce</span>
+                        <img src="{{ asset('image/User-Avatar.png') }}" class="user-image img-circle elevation-2"
+                            alt="User Image">
+                        <span class="d-none d-md-inline">
+                            Alexander Pierce
+                            {{--{{ Auth::guard('admin')->user()->name ?? '' }}--}}
+                        </span>
                     </a>
                     <ul class="user-layout dropdown-menu dropdown-menu-lg dropdown-menu-right">
                         <!-- User image -->
                         <li class="user-header bg-dark">
-                            <img src="{{ asset('image/User-Avatar.png') }}" class="img-circle elevation-2" alt="User Image">
+                            <img src="{{ asset('image/User-Avatar.png') }}" class="img-circle elevation-2"
+                                alt="User Image">
                             <p>
                                 Alexander Pierce
-                                {{--{{ Auth::guard('admin')->user()->name }}--}}
+                                {{--{{ Auth::guard('admin')->user()->name ?? '' }}--}}
                             </p>
                         </li>
                         <!-- Menu Footer-->
@@ -85,7 +92,8 @@
         <aside class="main-sidebar sidebar-dark-info elevation-4">
             <!-- Brand Logo -->
             <a href="#" class="brand-link">
-                <img src="{{asset('image/Admin-Logo.png')}}" alt="Admin Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+                <img src="{{asset('image/Admin-Logo.png')}}" alt="Admin Logo" class="brand-image img-circle elevation-3"
+                    style="opacity: .8">
                 <span class="brand-text font-weight-bold">Admin Panel</span>
             </a>
 
@@ -93,10 +101,11 @@
             <div class="sidebar">
                 <!-- Sidebar Menu -->
                 <nav class="mt-2">
-                    <ul class="nav nav-pills nav-sidebar flex-column nav-legacy nav-child-indent" data-widget="treeview" role="menu" data-accordion="false">
+                    <ul class="nav nav-pills nav-sidebar flex-column nav-legacy nav-child-indent" data-widget="treeview"
+                        role="menu" data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
                          with font-awesome or any other icon font library -->
-                        <li class="nav-item has-treeview menu-open">
+                        <li class="nav-item has-treeview {{ Helper::menuIsOpen([ 'dashboard']) }}">
                             <a href="#" class="nav-link {{ Helper::menuIsActive([ 'dashboard']) }}">
                                 <i class="nav-icon fas fa-home"></i>
                                 <p>
@@ -105,23 +114,23 @@
                             </a>
                         </li>
 
-                        <!-- <li class="nav-item has-treeview menu-open">
-                            <a href="#" class="nav-link {{ Helper::menuIsActive([ 'dashboard']) }}">
-                                <i class="nav-icon fas fa-tachometer-alt"></i>
-                                <p>
-                                    Dashboard
-                                    <i class="right fas fa-angle-left"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link {{ Helper::menuIsActive([ 'dashboard']) }}">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Dashboard</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li> -->
+                        {{-- <li class="nav-item has-treeview {{ Helper::menuIsOpen([ 'dashboard']) }}">
+                        <a href="#" class="nav-link {{ Helper::menuIsActive([ 'dashboard']) }}">
+                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                            <p>
+                                Dashboard
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="#" class="nav-link {{ Helper::menuIsActive([ 'dashboard']) }}">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Dashboard</p>
+                                </a>
+                            </li>
+                        </ul>
+                        </li> --}}
 
 
                     </ul>

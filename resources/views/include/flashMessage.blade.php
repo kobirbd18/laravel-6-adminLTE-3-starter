@@ -1,37 +1,39 @@
 @if(Session::has('success'))
-    <div class="box-body">
-        <div class="callout callout-success">
-            <h4><i class="icon fa fa-check"></i> Success!</h4>
-            <p>{{session('success')}}</p>
-        </div>
-    </div>
+
+<div class="alert alert-success alert-dismissible" style="padding-bottom: 0px;">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+    <h5><i class="icon fas fa-check"></i> Success!</h5>
+    <p>{{session('success')}}</p>
+</div>
+
 @endif
 
 @if(Session::has('error'))
-    <div class="box-body" style="padding-bottom: 0px;">
-        <div class="callout callout-warning">
-            <h4><i class="icon fa fa-warning"></i> Error!</h4>
-            <p>{{session('error')}}</p>
 
-        </div>
-    </div>
+<div class="alert alert-warning alert-dismissible" style="padding-bottom: 0px;">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+    <h5><i class="icon fas fa-exclamation-triangle"></i> Error!</h5>
+    <p>{{session('error')}}</p>
+</div>
+
 @endif
 
 @if(Session::has('warning'))
-    <div class="box-body" style="padding-bottom: 0px;">
-        <div class="callout callout-warning">
-            <h4><i class="icon fa fa-warning"></i> Warning!</h4>
-            <p>{{session('warning')}}</p>
-        </div>
-    </div>
+
+<div class="alert alert-warning alert-dismissible" style="padding-bottom: 0px;">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+    <h5><i class="icon fas fa-exclamation-triangle"></i> Error!</h5>
+    <p>{{session('warning')}}</p>
+</div>
+
 @endif
 
 @if(Session::has('forceLogoutError'))
-    <div class="callout callout-warning">
-        <h4><i class="icon fa fa-warning"></i> Error!</h4>
-        <p>{{session('forceLogoutError')}}</p>
-    </div>
+
+<div class="alert alert-warning alert-dismissible" style="padding-bottom: 0px;">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+    <h5><i class="icon fas fa-exclamation-triangle"></i> Error!</h5>
+    <p>{{session('forceLogoutError')}}</p>
+</div>
 
 @endif
-
-
