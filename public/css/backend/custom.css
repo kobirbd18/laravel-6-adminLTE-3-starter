@@ -11,9 +11,11 @@ select.disabled + .select2 {
 
 .custom-file,
 .btn,
+textarea,
 .custom-file-label,
 .input-group-text,
 .select2-container--default .select2-selection--single,
+.select2-container--default .select2-selection--multiple,
 .select2-dropdown,
 input {
     border-radius: 0 !important;
@@ -31,10 +33,10 @@ span.select2.select2-container.select2-container--default {
     box-shadow: none;
 }
 
-td.action a {
-    float: left;
-    margin-right: 2px;
+td a.btn {
+    margin-bottom: 2px;
 }
+
 .table th {
     padding: 0.5rem;
     vertical-align: middle;

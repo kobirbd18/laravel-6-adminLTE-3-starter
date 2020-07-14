@@ -4,7 +4,7 @@
     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
     <h5><i class="icon fas fa-exclamation-triangle"></i> Error!</h5>
     @foreach($errors->all() as $error)
-    <p>{{$error}}</p>
+    <p style="margin-bottom: 5px;">{{$error}}</p>
     @endforeach
 </div>
 
