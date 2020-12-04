@@ -47,6 +47,10 @@
     <!-- custom css -->
     <link rel="stylesheet" href="{{ asset('css/backend/custom.css') }}">
     <style>
+        .sidebar-dark-info .nav-sidebar.nav-legacy>.nav-item>.nav-link.active,
+        .sidebar-light-info .nav-sidebar.nav-legacy>.nav-item>.nav-link.active {
+            border-color: #28a745;
+        }
         [class*=sidebar-dark] .nav-legacy .nav-treeview>.nav-item>.nav-link.active,
         [class*=sidebar-dark] .nav-legacy.nav-sidebar>.nav-item>.nav-link.active {
             color: #28a745;
@@ -116,7 +120,7 @@
                         <!-- Add icons to the links using the .nav-icon class
                          with font-awesome or any other icon font library -->
                         <li class="nav-item has-treeview {{ Helper::menuIsOpen(['admin.dashboard']) }}">
-                            <a href="{{ url('/') }}" class="nav-link {{ Helper::menuIsActive([ 'admin.dashboard']) }}">
+                            <a href="{{ url('/') }}" class="nav-link {{ Helper::menuIsActive(['admin.dashboard']) }}">
                                 <i class="nav-icon fas fa-home"></i>
                                 <p>
                                     Dashboard

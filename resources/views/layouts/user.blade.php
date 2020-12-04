@@ -41,6 +41,11 @@
     <link rel="stylesheet" href="{{ asset('css/backend/custom.css') }}">
     <!-- add specific page css -->
     <style>
+        .sidebar-dark-info .nav-sidebar.nav-legacy>.nav-item>.nav-link.active,
+        .sidebar-light-info .nav-sidebar.nav-legacy>.nav-item>.nav-link.active {
+            border-color: #28a745;
+        }
+
         [class*=sidebar-dark] .nav-legacy .nav-treeview>.nav-item>.nav-link.active,
         [class*=sidebar-dark] .nav-legacy.nav-sidebar>.nav-item>.nav-link.active {
             color: #28a745;
@@ -108,33 +113,14 @@
                         role="menu" data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
                          with font-awesome or any other icon font library -->
-                        <li class="nav-item has-treeview menu-open">
-                            <a href="#" class="nav-link {{ Helper::menuIsActive([ 'dashboard']) }}">
+                        <li class="nav-item has-treeview {{ Helper::menuIsOpen(['user.dashboard']) }}">
+                            <a href="{{ url('/') }}" class="nav-link {{ Helper::menuIsActive(['user.dashboard']) }}">
                                 <i class="nav-icon fas fa-home"></i>
                                 <p>
                                     Dashboard
                                 </p>
                             </a>
                         </li>
-
-                        <!-- <li class="nav-item has-treeview menu-open">
-                            <a href="#" class="nav-link {{ Helper::menuIsActive([ 'dashboard']) }}">
-                                <i class="nav-icon fas fa-tachometer-alt"></i>
-                                <p>
-                                    Dashboard
-                                    <i class="right fas fa-angle-left"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link {{ Helper::menuIsActive([ 'dashboard']) }}">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Dashboard</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li> -->
-
 
                     </ul>
                 </nav>
