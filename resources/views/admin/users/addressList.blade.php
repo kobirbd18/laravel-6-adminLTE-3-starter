@@ -143,7 +143,7 @@
                             <button type="submit" class="btn btn-primary">Submit</button>
 
                             @if(Auth::guard('admin')->user()->hasRole('admin') ||
-                            Auth::guard('admin')->user()->can(['admin-users-read']))
+                            Auth::guard('admin')->user()->hasPermission(['admin-users-read']))
                             <a href="{{route('admin.users.index')}}" type="button" class="btn btn-danger">Back</a>
                             @endif
                         </div>
@@ -199,7 +199,7 @@
                                         <td class="text-center">
 
                                             @if(Auth::guard('admin')->user()->hasRole('admin') ||
-                                            Auth::guard('admin')->user()->can('admin-addresses-update'))
+                                            Auth::guard('admin')->user()->hasPermission('admin-addresses-update'))
                                             <a class="btn btn-primary btn-sm"
                                                 href="{{route('admin.addresses.edit', [$user->id, $address->id])}}"
                                                 data-toggle="tooltip" title="Edit"> <i class="fas fa-edit"></i></a>
@@ -207,7 +207,7 @@
 
                                             @if($address->is_default != 1)
                                             @if(Auth::guard('admin')->user()->hasRole('admin') ||
-                                            Auth::guard('admin')->user()->can('admin-addresses-delete'))
+                                            Auth::guard('admin')->user()->hasPermission('admin-addresses-delete'))
                                             <a href="#" class="btn btn-danger btn-sm" data-toggle="tooltip"
                                                 title="Delete" onclick="if (confirm(&quot;Are you sure you want to delete ?&quot;)) { document.getElementById('deleteForm{{ $address->id }}').submit();
                                             } event.returnValue = false; return false;"><i class="fa fa-trash"></i></a>

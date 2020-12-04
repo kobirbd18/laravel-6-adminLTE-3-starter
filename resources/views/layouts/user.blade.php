@@ -14,7 +14,8 @@
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Bootstrap 4 -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <!-- iCheck -->
     <link rel="stylesheet" href="{{ asset('css/backend/plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
     <!-- JQVMap -->
@@ -29,7 +30,8 @@
     <link rel="stylesheet" href="{{ asset('css/backend/plugins/summernote/summernote-bs4.css') }}">
     <!-- select 2 -->
     <link rel="stylesheet" href="{{ asset('css/backend/plugins/select2/css/select2.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/backend/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">
+    <link rel="stylesheet"
+        href="{{ asset('css/backend/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('css/backend/adminlte.min.css') }}">
     <!-- Google Font: Source Sans Pro -->
@@ -38,6 +40,12 @@
     <!-- custom css -->
     <link rel="stylesheet" href="{{ asset('css/backend/custom.css') }}">
     <!-- add specific page css -->
+    <style>
+        [class*=sidebar-dark] .nav-legacy .nav-treeview>.nav-item>.nav-link.active,
+        [class*=sidebar-dark] .nav-legacy.nav-sidebar>.nav-item>.nav-link.active {
+            color: #28a745;
+        }
+    </style>
     @stack('css')
 </head>
 
@@ -59,13 +67,15 @@
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item dropdown user-menu">
                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-                        <img src="{{ asset('image/User-Avatar.png') }}" class="user-image img-circle elevation-2" alt="User Image">
+                        <img src="{{ asset('image/User-Avatar.png') }}" class="user-image img-circle elevation-2"
+                            alt="User Image">
                         <span class="d-none d-md-inline">Alexander Pierce</span>
                     </a>
                     <ul class="user-layout dropdown-menu dropdown-menu-lg dropdown-menu-right">
                         <!-- User image -->
                         <li class="user-header bg-dark">
-                            <img src="{{ asset('image/User-Avatar.png') }}" class="img-circle elevation-2" alt="User Image">
+                            <img src="{{ asset('image/User-Avatar.png') }}" class="img-circle elevation-2"
+                                alt="User Image">
                             <p>
                                 Alexander Pierce
                                 {{--{{ Auth::guard('admin')->user()->name }}--}}
@@ -85,7 +95,8 @@
         <aside class="main-sidebar sidebar-dark-info elevation-4">
             <!-- Brand Logo -->
             <a href="#" class="brand-link">
-                <img src="{{asset('image/Admin-Logo.png')}}" alt="Admin Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+                <img src="{{asset('image/Admin-Logo.png')}}" alt="Admin Logo" class="brand-image img-circle elevation-3"
+                    style="opacity: .8">
                 <span class="brand-text font-weight-bold">Admin Panel</span>
             </a>
 
@@ -93,7 +104,8 @@
             <div class="sidebar">
                 <!-- Sidebar Menu -->
                 <nav class="mt-2">
-                    <ul class="nav nav-pills nav-sidebar flex-column nav-legacy nav-child-indent" data-widget="treeview" role="menu" data-accordion="false">
+                    <ul class="nav nav-pills nav-sidebar flex-column nav-legacy nav-child-indent" data-widget="treeview"
+                        role="menu" data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
                          with font-awesome or any other icon font library -->
                         <li class="nav-item has-treeview menu-open">
@@ -188,9 +200,15 @@
         $(document).ready(function() {
             $('ul.user-layout').on('click', function(event) {
                 event.stopPropagation();
+            });
 
-            })
+            $('[data-toggle="tooltip"]').tooltip();
 
+            let activeItem = $('.nav-item .nav-link.active').offset().top;
+            let windowHeight = $(window).height();
+            let scrollPosition = activeItem - (windowHeight/2);
+            let instances = $(".sidebar").overlayScrollbars({ }).overlayScrollbars();
+            instances.scroll({ x : "0", y : scrollPosition }, 300);
         });
     </script>
     <!-- partial Scripts specific page-->

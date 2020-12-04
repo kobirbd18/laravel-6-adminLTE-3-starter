@@ -95,14 +95,14 @@
                                         <td class="text-center">
 
                                             @if(Auth::guard('admin')->user()->hasRole('admin') ||
-                                            Auth::guard('admin')->user()->can('admin-thanas-update'))
+                                            Auth::guard('admin')->user()->hasPermission('admin-thanas-update'))
                                             <a class="btn btn-primary btn-sm"
                                                 href="{{route('admin.thanas.edit', $thana->id)}}" data-toggle="tooltip"
                                                 title="Edit"> <i class="fas fa-edit"></i></a>
                                             @endif
 
                                             @if(Auth::guard('admin')->user()->hasRole('admin') ||
-                                            Auth::guard('admin')->user()->can('admin-thanas-delete'))
+                                            Auth::guard('admin')->user()->hasPermission('admin-thanas-delete'))
                                             <a href="#" class="btn btn-danger btn-sm" data-toggle="tooltip"
                                                 title="Delete"
                                                 onclick="if (confirm(&quot;Are you sure you want to delete ?&quot;)) { document.getElementById('deleteForm{{ $thana->id }}').submit(); } event.returnValue = false; return false;"><i

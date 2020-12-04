@@ -51,7 +51,7 @@ class AdminController extends Controller {
     }
 
     public function index(Request $request) {
-        if (Auth::guard('admin')->user()->hasRole('admin') || Auth::guard('admin')->user()->can(['admin-admins-read'])) {
+        if (Auth::guard('admin')->user()->hasRole('admin') || Auth::guard('admin')->user()->hasPermission(['admin-admins-read'])) {
             $admins = Admin::orderBy('name', 'ASC');
 
             if ($request->get('name')) {
@@ -75,7 +75,7 @@ class AdminController extends Controller {
     }
 
     public function create(Request $request) {
-        if (Auth::guard('admin')->user()->hasRole('admin') || Auth::guard('admin')->user()->can(['admin-admins-create'])) {
+        if (Auth::guard('admin')->user()->hasRole('admin') || Auth::guard('admin')->user()->hasPermission(['admin-admins-create'])) {
             $display = 'none';
             if (old('role_id') && old('role_id') > 1) {
                 $display = 'block';
@@ -89,14 +89,14 @@ class AdminController extends Controller {
     }
 
     public function store(Request $request) {
-        if (Auth::guard('admin')->user()->hasRole('admin') || Auth::guard('admin')->user()->can(['admin-admins-create'])) {
+        if (Auth::guard('admin')->user()->hasRole('admin') || Auth::guard('admin')->user()->hasPermission(['admin-admins-create'])) {
             $messages = [
                 'role_id.required' => 'The Role field is required',
                 'name.required' => 'The Name field is required',
                 'email.required' => 'The Email field is required',
                 'email.unique' => 'The Email already exists',
                 'phone.required' => 'The Phone field is required',
-                'phone.regex' => 'Invalid Phone number format.',
+                'phone.bd_mobile' => 'Invalid Phone number format.',
                 'phone.unique' => 'The Phone already exists',
                 'password.required' => 'The Password field is required',
                 'password_confirmation.required' => 'The Confirm Password field is required',
@@ -107,7 +107,7 @@ class AdminController extends Controller {
                 'name' => 'required',
                 'phone' => [
                     'required',
-                    'regex:/^(01)[1-9]{1}[0-9]{8}$/',
+                    'bd_mobile',
                     Rule::unique('admins', 'phone')->whereNull('deleted_at'),
                 ],
                 'email' => [
@@ -150,7 +150,7 @@ class AdminController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function edit($id) {
-        if (Auth::guard('admin')->user()->hasRole('admin') || Auth::guard('admin')->user()->can(['admin-admins-update'])) {
+        if (Auth::guard('admin')->user()->hasRole('admin') || Auth::guard('admin')->user()->hasPermission(['admin-admins-update'])) {
             $admin = Admin::findOrFail($id);
             $permissionGroups = AdminPermissionGroup::where('status', 1)->with('permissions')->get();
             $display = 'none';
@@ -171,14 +171,14 @@ class AdminController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id) {
-        if (Auth::guard('admin')->user()->hasRole('admin') || Auth::guard('admin')->user()->can(['admin-admins-update'])) {
+        if (Auth::guard('admin')->user()->hasRole('admin') || Auth::guard('admin')->user()->hasPermission(['admin-admins-update'])) {
             $messages = [
                 'role_id.required' => 'The Role field is required',
                 'name.required' => 'The Name field is required',
                 'email.required' => 'The Email field is required',
                 'email.unique' => 'The Email already exists',
                 'phone.required' => 'The Phone field is required',
-                'phone.regex' => 'Invalid Phone number format.',
+                'phone.bd_mobile' => 'Invalid Phone number format.',
                 'phone.unique' => 'The Phone already exists',
                 'password.required' => 'The Password field is required',
                 'password_confirmation.required' => 'The Confirm Password field is required',
@@ -189,7 +189,7 @@ class AdminController extends Controller {
                 'name' => 'required',
                 'phone' => [
                     'required',
-                    'regex:/^(01)[1-9]{1}[0-9]{8}$/',
+                    'bd_mobile',
                     Rule::unique('admins', 'phone')->whereNull('deleted_at')->ignore($id),
                 ],
                 'email' => [
@@ -238,7 +238,7 @@ class AdminController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function destroy($id) {
-        if (Auth::guard('admin')->user()->hasRole('admin') || Auth::guard('admin')->user()->can(['admin-admins-delete'])) {
+        if (Auth::guard('admin')->user()->hasRole('admin') || Auth::guard('admin')->user()->hasPermission(['admin-admins-delete'])) {
             if (Auth::guard('admin')->user()->id == $id) {
                 Session::flash('error', 'You cannot delete your own account');
 
@@ -270,7 +270,7 @@ class AdminController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function resetPassword($id) {
-        if (Auth::guard('admin')->user()->hasRole('admin') || Auth::guard('admin')->user()->can(['admin-admins-update'])) {
+        if (Auth::guard('admin')->user()->hasRole('admin') || Auth::guard('admin')->user()->hasPermission(['admin-admins-update'])) {
             $admin = Admin::findOrFail($id);
             return view('admin.admins.resetPassword', compact('admin'));
         } else {
@@ -279,7 +279,7 @@ class AdminController extends Controller {
     }
 
     public function resetPasswordStore($id, Request $request) {
-        if (Auth::guard('admin')->user()->hasRole('admin') || Auth::guard('admin')->user()->can(['admin-admins-update'])) {
+        if (Auth::guard('admin')->user()->hasRole('admin') || Auth::guard('admin')->user()->hasPermission(['admin-admins-update'])) {
             $messages = [
                 'password.required' => 'Password field is required',
                 'password_confirmation.required' => 'Confirm Password field is required',

@@ -119,7 +119,7 @@
                         <div class="card-header">
                             <h3 class="card-title">User Address List</h3>
                             @if(Auth::guard('admin')->user()->hasRole('admin') ||
-                            Auth::guard('admin')->user()->can(['admin-addresses-read']))
+                            Auth::guard('admin')->user()->hasPermission(['admin-addresses-read']))
                             <a class="btn btn-success float-right" href="{{ route('admin.addresses.index', $user->id) }}">Addresses</a>
                             @endif
                         </div>

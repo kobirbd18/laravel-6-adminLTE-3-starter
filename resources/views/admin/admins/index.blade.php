@@ -95,7 +95,7 @@
                                         <td>{{ $admin->updated_at->diffForHumans() }}</td>
                                         <td class="text-center">
                                             @if(Auth::guard('admin')->user()->hasRole('admin') ||
-                                            Auth::guard('admin')->user()->can('admin-admins-update'))
+                                            Auth::guard('admin')->user()->hasPermission('admin-admins-update'))
                                             <a class="btn btn-primary btn-sm"
                                                 href="{{route('admin.admins.edit', $admin->id)}}" data-toggle="tooltip"
                                                 title="Edit"> <i class="fas fa-edit"></i></a>
@@ -107,7 +107,7 @@
                                             @endif
 
                                             @if(Auth::guard('admin')->user()->hasRole('admin') ||
-                                            Auth::guard('admin')->user()->can('admin-admins-delete'))
+                                            Auth::guard('admin')->user()->hasPermission('admin-admins-delete'))
                                             <a href="#" class="btn btn-danger btn-sm" data-toggle="tooltip"
                                                 title="Delete"
                                                 onclick="if (confirm(&quot;Are you sure you want to delete ?&quot;)) { document.getElementById('deleteForm{{ $admin->id }}').submit(); } event.returnValue = false; return false;"><i

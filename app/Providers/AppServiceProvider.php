@@ -28,5 +28,8 @@ class AppServiceProvider extends ServiceProvider {
         Validator::extend('verify_otp', function ($attribute, $value, $parameters, $validator) {
             return Hash::check($value, current($parameters));
         });
+        Validator::extend('bd_mobile', function ($attribute, $value, $parameters, $validator) {
+            return preg_match('/^(01)[1-9]{1}[0-9]{8}$/', $value);
+        });
     }
 }

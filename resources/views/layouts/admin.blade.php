@@ -46,6 +46,12 @@
 
     <!-- custom css -->
     <link rel="stylesheet" href="{{ asset('css/backend/custom.css') }}">
+    <style>
+        [class*=sidebar-dark] .nav-legacy .nav-treeview>.nav-item>.nav-link.active,
+        [class*=sidebar-dark] .nav-legacy.nav-sidebar>.nav-item>.nav-link.active {
+            color: #28a745;
+        }
+    </style>
     <!-- add specific page css -->
     @stack('css')
 </head>
@@ -119,7 +125,7 @@
                         </li>
 
                         @if(Auth::guard('admin')->user()->hasRole('admin') ||
-                        Auth::guard('admin')->user()->can(['admin-permission-groups-read',
+                        Auth::guard('admin')->user()->hasPermission(['admin-permission-groups-read',
                         'admin-permission-groups-create',
                         'admin-permission-groups-update', 'admin-permission-groups-delete']))
                         <li
@@ -134,7 +140,7 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 @if(Auth::guard('admin')->user()->hasRole('admin') ||
-                                Auth::guard('admin')->user()->can(['admin-permission-groups-create']))
+                                Auth::guard('admin')->user()->hasPermission(['admin-permission-groups-create']))
                                 <li class="nav-item">
                                     <a href="{{ route('admin.admin-permission-groups.create') }}"
                                         class="nav-link {{ Helper::menuIsActive(['admin.admin-permission-groups.create']) }}">
@@ -145,7 +151,7 @@
                                 @endif
 
                                 @if(Auth::guard('admin')->user()->hasRole('admin') ||
-                                Auth::guard('admin')->user()->can(['admin-permission-groups-read']))
+                                Auth::guard('admin')->user()->hasPermission(['admin-permission-groups-read']))
                                 <li class="nav-item">
                                     <a href="{{ route('admin.admin-permission-groups.index') }}"
                                         class="nav-link {{ Helper::menuIsActive(['admin.admin-permission-groups.index']) }}">
@@ -159,7 +165,7 @@
                         @endif
 
                         @if(Auth::guard('admin')->user()->hasRole('admin') ||
-                        Auth::guard('admin')->user()->can(['admin-admins-create',
+                        Auth::guard('admin')->user()->hasPermission(['admin-admins-create',
                         'admin-admins-read',
                         'admin-admins-update', 'admin-admins-delete']))
                         <li
@@ -174,7 +180,7 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 @if(Auth::guard('admin')->user()->hasRole('admin') ||
-                                Auth::guard('admin')->user()->can(['admin-admins-create']))
+                                Auth::guard('admin')->user()->hasPermission(['admin-admins-create']))
                                 <li class="nav-item">
                                     <a href="{{ route('admin.admins.create') }}"
                                         class="nav-link {{ Helper::menuIsActive(['admin.admins.create']) }}">
@@ -185,7 +191,7 @@
                                 @endif
 
                                 @if(Auth::guard('admin')->user()->hasRole('admin') ||
-                                Auth::guard('admin')->user()->can(['admin-admins-read']))
+                                Auth::guard('admin')->user()->hasPermission(['admin-admins-read']))
                                 <li class="nav-item">
                                     <a href="{{ route('admin.admins.index') }}"
                                         class="nav-link {{ Helper::menuIsActive(['admin.admins.index']) }}">
@@ -266,9 +272,15 @@
         $(document).ready(function() {
             $('ul.user-layout').on('click', function(event) {
                 event.stopPropagation();
-            })
+            });
 
-            $('[data-toggle="tooltip"]').tooltip()
+            $('[data-toggle="tooltip"]').tooltip();
+
+            let activeItem = $('.nav-item .nav-link.active').offset().top;
+            let windowHeight = $(window).height();
+            let scrollPosition = activeItem - (windowHeight/2);
+            let instances = $(".sidebar").overlayScrollbars({ }).overlayScrollbars();
+            instances.scroll({ x : "0", y : scrollPosition }, 300);
         });
     </script>
     <!-- partial Scripts specific page-->

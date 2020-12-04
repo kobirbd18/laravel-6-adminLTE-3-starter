@@ -122,22 +122,22 @@
                                                 title="Detail"> <i class="fas fa-eye"></i></a>
 
                                             @if(Auth::guard('admin')->user()->hasRole('admin') ||
-                                            Auth::guard('admin')->user()->can(['admin-addresses-read']))
+                                            Auth::guard('admin')->user()->hasPermission(['admin-addresses-read']))
                                             <a class="btn btn-success btn-sm"
                                                 href="{{ route('admin.addresses.index', $user->id) }}"
                                                 data-toggle="tooltip" title="Addresses"> <i
                                                     class="fas fa-map-marker-alt"></i></a>
                                             @endif
-                                            
+
                                             @if(Auth::guard('admin')->user()->hasRole('admin') ||
-                                            Auth::guard('admin')->user()->can('admin-users-update'))
+                                            Auth::guard('admin')->user()->hasPermission('admin-users-update'))
                                             <a class="btn btn-primary btn-sm"
                                                 href="{{route('admin.users.edit', $user->id)}}" data-toggle="tooltip"
                                                 title="Edit"> <i class="fas fa-edit"></i></a>
                                             @endif
 
                                             {{-- @if(Auth::guard('admin')->user()->hasRole('admin') ||
-                                            Auth::guard('admin')->user()->can('admin-users-delete'))
+                                            Auth::guard('admin')->user()->hasPermission('admin-users-delete'))
                                             <a href="#" class="btn btn-danger btn-sm" data-toggle="tooltip"
                                                 title="Delete"
                                                 onclick="if (confirm(&quot;Are you sure you want to delete ?&quot;)) { document.getElementById('deleteForm{{ $user->id }}').submit();

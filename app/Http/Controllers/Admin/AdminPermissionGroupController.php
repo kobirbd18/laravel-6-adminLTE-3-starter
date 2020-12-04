@@ -22,7 +22,7 @@ class AdminPermissionGroupController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        if (Auth::guard('admin')->user()->hasRole('admin') || Auth::guard('admin')->user()->can(['admin-permission-groups-read'])) {
+        if (Auth::guard('admin')->user()->hasRole('admin') || Auth::guard('admin')->user()->hasPermission(['admin-permission-groups-read'])) {
             $adminPermissionGroups = AdminPermissionGroup::orderBy('name', 'asc')->paginate(50);
             // dd($adminPermissionGroups);
             return view('admin.admin-permission-groups.index', compact('adminPermissionGroups'));
@@ -37,7 +37,7 @@ class AdminPermissionGroupController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function create() {
-        if (Auth::guard('admin')->user()->hasRole('admin') || Auth::guard('admin')->user()->can(['admin-permission-groups-create'])) {
+        if (Auth::guard('admin')->user()->hasRole('admin') || Auth::guard('admin')->user()->hasPermission(['admin-permission-groups-create'])) {
             $used = DB::table('admin_permission_group_permission')->pluck('permission_id', 'permission_id')->all();
             // dd($used);
             $permissions = Permission::whereNotIn('id', $used)->pluck('display_name', 'id')->all();
@@ -54,7 +54,7 @@ class AdminPermissionGroupController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request) {
-        if (Auth::guard('admin')->user()->hasRole('admin') || Auth::guard('admin')->user()->can(['admin-permission-groups-create'])) {
+        if (Auth::guard('admin')->user()->hasRole('admin') || Auth::guard('admin')->user()->hasPermission(['admin-permission-groups-create'])) {
             $messages = [
                 'name.required' => 'The Name field is required.',
                 'name.unique' => 'The Name already has been taken.',
@@ -102,7 +102,7 @@ class AdminPermissionGroupController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function edit($id) {
-        if (Auth::guard('admin')->user()->hasRole('admin') || Auth::guard('admin')->user()->can(['admin-permission-groups-update'])) {
+        if (Auth::guard('admin')->user()->hasRole('admin') || Auth::guard('admin')->user()->hasPermission(['admin-permission-groups-update'])) {
             //check existence
             $permission_group = DB::table('admin_permission_group_permission')->where('admin_permission_group_id', $id)->pluck('permission_id', 'permission_id')->all();
             $permission_admin_user = DB::table('permission_user')->where('user_type', 'App\Admin')->pluck('permission_id', 'permission_id')->all();
@@ -136,7 +136,7 @@ class AdminPermissionGroupController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id) {
-        if (Auth::guard('admin')->user()->hasRole('admin') || Auth::guard('admin')->user()->can(['admin-permission-groups-update'])) {
+        if (Auth::guard('admin')->user()->hasRole('admin') || Auth::guard('admin')->user()->hasPermission(['admin-permission-groups-update'])) {
             $messages = [
                 'name.required' => 'The Name field is required.',
                 'name.unique' => 'The Name already has been taken.',
@@ -184,7 +184,7 @@ class AdminPermissionGroupController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function destroy($id) {
-        if (Auth::guard('admin')->user()->hasRole('admin') || Auth::guard('admin')->user()->can(['admin-permission-groups-delete'])) {
+        if (Auth::guard('admin')->user()->hasRole('admin') || Auth::guard('admin')->user()->hasPermission(['admin-permission-groups-delete'])) {
             //check existence
             $permission_group = DB::table('admin_permission_group_permission')->where('admin_permission_group_id', $id)->pluck('permission_id', 'permission_id')->all();
             $permission_admin_user = DB::table('permission_user')->where('user_type', 'App\Admin')->pluck('permission_id', 'permission_id')->all();

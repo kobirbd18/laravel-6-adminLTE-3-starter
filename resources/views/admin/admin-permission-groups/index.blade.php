@@ -54,14 +54,14 @@
                                         <td>{{$permission->updated_at->diffForHumans()}}</td>
                                         <td class="text-center">
                                             @if(Auth::guard('admin')->user()->hasRole('admin') ||
-                                            Auth::guard('admin')->user()->can('admin-permission-groups-update'))
+                                            Auth::guard('admin')->user()->hasPermission('admin-permission-groups-update'))
                                             <a data-toggle="tooltip" title="Edit"
                                                 href="{{route('admin.admin-permission-groups.edit', $permission->id)}}"
                                                 class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>
                                             @endif
 
                                             @if(Auth::guard('admin')->user()->hasRole('admin') ||
-                                            Auth::guard('admin')->user()->can('admin-permission-groups-delete'))
+                                            Auth::guard('admin')->user()->hasPermission('admin-permission-groups-delete'))
                                             <a href="#" data-toggle="tooltip" title="Delete"
                                                 class="btn btn-danger btn-sm"
                                                 onclick="if (confirm(&quot;Are you sure you want to delete ?&quot;)) { document.getElementById('deleteForm{{ $permission->id }}').submit(); } event.returnValue = false; return false;"><i

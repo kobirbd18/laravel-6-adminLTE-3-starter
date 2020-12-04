@@ -84,7 +84,7 @@
                             <button type="submit" class="btn btn-primary">Submit</button>
 
                             @if(Auth::guard('admin')->user()->hasRole('admin') ||
-                            Auth::guard('admin')->user()->can(['admin-permission-groups-read']))
+                            Auth::guard('admin')->user()->hasPermission(['admin-permission-groups-read']))
                             <a href="{{route('admin.admin-permission-groups.index')}}" type="button"
                                 class="btn btn-danger">Back</a>
                             @endif

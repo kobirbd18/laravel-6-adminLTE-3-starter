@@ -75,7 +75,7 @@
                             <button type="submit" class="btn btn-primary">Submit</button>
 
                             @if(Auth::guard('admin')->user()->hasRole('admin') ||
-                            Auth::guard('admin')->user()->can(['admin-thanas-read']))
+                            Auth::guard('admin')->user()->hasPermission(['admin-thanas-read']))
                             <a href="{{route('admin.thanas.index')}}" type="button" class="btn btn-danger">Cancel</a>
                             @endif
                         </div>
